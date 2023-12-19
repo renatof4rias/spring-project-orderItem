@@ -62,6 +62,9 @@ public class Order implements Serializable {
 		return client;
 	}
 	
+	
+	//aa
+	
 	public void setClient(User client) {
 		this.client = client;
 	}
