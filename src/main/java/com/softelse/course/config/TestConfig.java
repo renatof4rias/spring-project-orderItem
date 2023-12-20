@@ -50,14 +50,16 @@ public class TestConfig implements CommandLineRunner{
 		
 		Product p1 = new Product (null, "Panqueca", "Prato Sobremesa", 7.50, "http:aaaaa.com");
 		Product p2 = new Product (null, "Picanha", "Prato Principal", 77.50, "http:aaaaa.com");
-		Product p3 = new Product (null, "Batata Frita", "Prato Entrada", 7.50, "http:aaaaa.com");
-		
+		Product p3 = new Product (null, "Batata Frita", "Prato Entrada", 5.50, "http:aaaaa.com");
+		Product p4 = new Product (null, "Pudim", "Prato Sobremesa", 12.50, "http:aaaaa.com");
+		Product p5 = new Product (null, "Hamburgue", "Prato Principal", 47.50, "http:aaaaa.com");
+		Product p6 = new Product (null, "Cebola Crisp", "Prato Entrada", 17.50, "http:aaaaa.com");
 		
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
-		productRepository.saveAll(Arrays.asList(p1, p2, p3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6));
 		
 	}
 	

@@ -1,13 +1,16 @@
 package com.softelse.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_product")
@@ -22,8 +25,8 @@ public class Product implements Serializable{
 	private Double price;
 	private String imgUrl;
 	
-
-	//private Category categories;
+	@Transient
+	private Set<Category> categories = new HashSet<>();
 
 	public Product() {
 
@@ -36,7 +39,6 @@ public class Product implements Serializable{
 		this.description = description;
 		this.price = price;
 		this.imgUrl = imgUrl;
-		//this.categories = categories; Category categories
 	}
 
 	public Long getId() {
@@ -78,14 +80,10 @@ public class Product implements Serializable{
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-
-//	public Category getCategories() {
-//		return categories;
-//	}
-//
-//	public void setCategories(Category categories) {
-//		this.categories = categories;
-//	}
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
 
 	@Override
 	public int hashCode() {
@@ -103,5 +101,5 @@ public class Product implements Serializable{
 		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }
