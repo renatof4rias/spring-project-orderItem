@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.softelse.course.entities.Category;
 import com.softelse.course.entities.Order;
+import com.softelse.course.entities.OrderItem;
 import com.softelse.course.entities.Product;
 import com.softelse.course.entities.User;
 import com.softelse.course.entities.enums.OrderStatus;
 import com.softelse.course.repositories.CategoryRepository;
+import com.softelse.course.repositories.OrderItemRepository;
 import com.softelse.course.repositories.OrderRepository;
 import com.softelse.course.repositories.ProductRepository;
 import com.softelse.course.repositories.UserRepository;
@@ -33,7 +35,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private ProductRepository productRepository;
-	
+
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -56,7 +60,6 @@ public class TestConfig implements CommandLineRunner{
 		Product p5 = new Product (null, "Hamburgue", "Prato Principal", 47.50, "http:aaaaa.com");
 		Product p6 = new Product (null, "Cebola Crisp", "Prato Entrada", 17.50, "http:aaaaa.com");
 		
-		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
@@ -72,6 +75,14 @@ public class TestConfig implements CommandLineRunner{
 		p6.getCategories().add(c2);
 		
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4,p5, p6));
+		
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2 , p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 1 , p3.getPrice());
+		OrderItem oi3 = new OrderItem(o2, p3, 2 , p3.getPrice());
+		OrderItem oi4 = new OrderItem(o3, p5, 2 , p5.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
 	}
 	
